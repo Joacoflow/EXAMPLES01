@@ -1,0 +1,115 @@
+namespace LISTASENLAZALUMNO
+{
+    class Program
+    {
+        class Nodo
+        {
+            public int Nota;         // Edad almacenada en el nodo
+            public Nodo Siguiente;  // Referencia al siguiente nodo en la lista enlazada
+
+            public Nodo(int nota)
+            {
+                Nota = nota;        // Inicializa la edad del nodo con la edad proporcionada
+                Siguiente = null;   // Inicializa la referencia al siguiente nodo como nula
+            }
+        }
+
+        class NotasManager
+        {
+            private List<Nodo> listaNotas = new List<Nodo>();   // Lista de nodos para manejar las edades
+
+            public void Insertar(int nota)
+            {
+                Nodo nuevoNodo = new Nodo(nota);    // Crea un nuevo nodo con la nota proporcionada
+                listaNotas.Add(nuevoNodo);         // Agrega el nuevo nodo a la lista de notas
+                Console.WriteLine("Nota insertada correctamente.");
+
+                if (nota > 10.5)
+                {
+                    Console.WriteLine("Usted esta aprboado");
+
+                }
+                else
+                {
+                    Console.WriteLine("No esta aprobado");
+                }
+
+            }
+
+            public void Mostrar()
+            {
+                Console.WriteLine("Lista de edades:");
+                foreach (Nodo nodo in listaNotas)
+                {
+                    Console.Write(nodo.Nota + " ");  // Imprime la nota del nodo actual
+                }
+                Console.WriteLine();
+            }
+
+            public void Verifi()
+            {
+                if (listaNotas.Count > 10.5)
+                {
+                    Console.WriteLine("Usted esta aprboado");
+
+                }
+                else 
+                {
+                    Console.WriteLine("No esta aprobado");
+                }
+
+
+            }
+
+           
+        }
+
+        static void Main(string[] args)
+        {
+            NotasManager manager = new NotasManager();   // Crea una instancia del manejador de edades.
+
+            while (true)
+            {
+                Console.WriteLine("MENU:");
+                Console.WriteLine("1. INSERTAR NOTA");
+                Console.WriteLine("2. MOSTRAR");
+                Console.WriteLine("3. VERIFICAR NOTA");
+                Console.WriteLine("4. SALIR");
+                Console.Write("ESCOJA UNA OPCION: ");
+                
+
+                int opcion = int.Parse(Console.ReadLine());
+
+                switch (opcion)
+                {
+                    case 1:
+                        Console.Write("Ingrese una edad: ");
+                        int edad = int.Parse(Console.ReadLine());
+                        manager.Insertar(edad);    // Inserta la nota en la lista
+                        Console.WriteLine() ;
+                        break;
+
+                    case 2:
+                        manager.Mostrar();         // Muestra las notas ingresadas ,  en la lista
+
+                        break;
+
+                    case 3:
+                        manager.Verifi();  // Verifica si esta aprobado
+                        
+                        break;
+
+                    case 4:
+                        Console.WriteLine("¡Hasta luego!");
+                        Console.Clear();
+                        return;
+
+                    default:
+                        Console.WriteLine("Opción no válida.");
+                        Console.Clear();
+                        break;
+                }
+            }
+        }
+    }
+}
